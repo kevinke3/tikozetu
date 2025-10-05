@@ -1,17 +1,29 @@
-// src/components/EventCard.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const EventCard = ({ event }) => {
   return (
-    <div className="bg-[#2C3531] text-[#D1E8E2] rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300">
-      <img src={event.image} alt={event.title} className="w-full h-48 object-cover" />
-      <div className="p-5">
-        <h3 className="text-xl font-semibold text-[#FFCB9A]">{event.title}</h3>
-        <p className="text-sm text-[#D9B08C] mt-2">{event.date}</p>
-        <p className="mt-3 text-sm opacity-80">{event.description}</p>
-        <button className="mt-4 w-full bg-[#116466] py-2 rounded-md hover:bg-[#D9B08C] hover:text-[#2C3531] transition">
-          Book Now
-        </button>
+    <div className="bg-[#2C3531] rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl border border-[#D9B08C]">
+      <img
+        src={event.image}
+        alt={event.title}
+        className="w-full h-56 object-cover"
+      />
+      <div className="p-5 text-[#D1E8E2]">
+        <h3 className="text-2xl font-bold text-[#FFCB9A] mb-2">{event.title}</h3>
+        <p className="text-sm text-[#D9B08C] mb-1">{event.date}</p>
+        <p className="text-sm text-[#D9B08C] mb-4">{event.location}</p>
+        <p className="text-sm mb-4 line-clamp-3">{event.description}</p>
+
+        <div className="flex justify-between items-center">
+          <span className="font-semibold text-[#FFCB9A]">Ksh {event.price}</span>
+          <Link
+            to={`/event/${event.id}`}
+            className="bg-[#D9B08C] text-[#2C3531] px-4 py-2 rounded-md hover:bg-[#FFCB9A] transition"
+          >
+            View
+          </Link>
+        </div>
       </div>
     </div>
   );
