@@ -1,28 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 
-const EventCard = ({ event }) => {
+const EventCard = ({ event, onBook }) => {
   return (
-    <div className="bg-[#2C3531] rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl border border-[#D9B08C]">
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden">
+      {/* Event Image */}
       <img
         src={event.image}
         alt={event.title}
         className="w-full h-56 object-cover"
       />
-      <div className="p-5 text-[#D1E8E2]">
-        <h3 className="text-2xl font-bold text-[#FFCB9A] mb-2">{event.title}</h3>
-        <p className="text-sm text-[#D9B08C] mb-1">{event.date}</p>
-        <p className="text-sm text-[#D9B08C] mb-4">{event.location}</p>
-        <p className="text-sm mb-4 line-clamp-3">{event.description}</p>
 
-        <div className="flex justify-between items-center">
-          <span className="font-semibold text-[#FFCB9A]">Ksh {event.price}</span>
-          <Link
-            to={`/event/${event.id}`}
-            className="bg-[#D9B08C] text-[#2C3531] px-4 py-2 rounded-md hover:bg-[#FFCB9A] transition"
+      {/* Event Info */}
+      <div className="p-5 flex flex-col gap-2">
+        <h2 className="text-xl font-semibold text-gray-800">{event.title}</h2>
+        <p className="text-gray-500 text-sm">{event.date} • {event.location}</p>
+        <p className="text-gray-700 text-sm line-clamp-2">{event.description}</p>
+
+        {/* Price and Book Button */}
+        <div className="flex justify-between items-center mt-4">
+          <span className="text-lg font-bold text-[#00BFA6]">
+            KES {event.price}
+          </span>
+          <button
+            onClick={() => onBook(event)}
+            className="bg-[#00BFA6] hover:bg-[#00a98f] text-white text-sm px-4 py-2 rounded-xl transition"
           >
-            View
-          </Link>
+            Book Ticket
+          </button>
         </div>
       </div>
     </div>

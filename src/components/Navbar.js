@@ -1,21 +1,35 @@
-// src/components/Navbar.js
-import React from 'react';
+import React from "react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
-    <nav className="bg-[#2C3531] text-[#D1E8E2] px-6 py-4 flex justify-between items-center shadow-md">
-      <div className="text-2xl font-bold text-[#FFCB9A] tracking-wide">
-        Tikozetu
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+        {/* Logo / Brand */}
+        <h1 className="text-2xl font-bold text-[#00BFA6] italic tracking-wide">
+          Tiko<span className="text-gray-800">Zetu</span>
+        </h1>
+
+        {/* Navigation Links */}
+        <ul className="hidden md:flex gap-6 text-gray-700 font-medium">
+          <li className="hover:text-[#00BFA6] cursor-pointer transition">Home</li>
+          <li className="hover:text-[#00BFA6] cursor-pointer transition">Events</li>
+          <li className="hover:text-[#00BFA6] cursor-pointer transition">Tickets</li>
+          <li className="hover:text-[#00BFA6] cursor-pointer transition">Contact</li>
+        </ul>
+
+        {/* CTA Button */}
+        <Button className="bg-[#00BFA6] hover:bg-[#00a98f] text-white rounded-xl px-4 py-2">
+          Book Now
+        </Button>
+
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden flex flex-col gap-1 cursor-pointer">
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+        </div>
       </div>
-      <ul className="hidden md:flex space-x-8">
-        <li className="hover:text-[#D9B08C] cursor-pointer">Home</li>
-        <li className="hover:text-[#D9B08C] cursor-pointer">Events</li>
-        <li className="hover:text-[#D9B08C] cursor-pointer">Book</li>
-        <li className="hover:text-[#D9B08C] cursor-pointer">Admin</li>
-      </ul>
-      <button className="bg-[#116466] text-[#D1E8E2] px-4 py-2 rounded-lg hover:bg-[#D9B08C] hover:text-[#2C3531] transition">
-        Login
-      </button>
     </nav>
   );
 };
