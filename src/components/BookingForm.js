@@ -1,101 +1,104 @@
-import React, { useState } from 'react';
-import Ticket from './Ticket';
+import React, { useState } from "react";
 
-const BookingForm = ({ eventName = 'General Event', date = 'TBA' }) => {
+const BookingForm = ({ selectedEvent, onClose, onConfirm }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    name: "",
+    phone: "",
+    email: "",
   });
 
-  const [booking, setBooking] = useState(null);
-  const [submitted, setSubmitted] = useState(false);
-
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const bookingId = 'TIKO' + Math.floor(100000 + Math.random() * 900000);
-    const newBooking = {
-      id: bookingId,
-      ...formData,
-      eventName,
-      date,
-    };
-    setBooking(newBooking);
-    setSubmitted(true);
-
-    // save booking locally
-    const existing = JSON.parse(localStorage.getItem('tikozetu_bookings')) || [];
-    existing.push(newBooking);
-    localStorage.setItem('tikozetu_bookings', JSON.stringify(existing));
-
-    // clear form
-    setFormData({ name: '', email: '', phone: '' });
+    if (!formData.name || !formData.phone) return;
+    onConfirm(formData);
   };
 
+  if (!selectedEvent) return null;
+
   return (
-    <div className="flex flex-col items-center bg-[#2C3531] py-10 px-4 text-[#D1E8E2]">
-      <h2 className="text-2xl md:text-3xl font-bold text-[#FFCB9A] mb-6">Book Your Ticket</h2>
-
-      <form
-        onSubmit={handleSubmit}
-        className="bg-[#116466] p-6 rounded-xl shadow-xl w-full max-w-md space-y-4 border border-[#D9B08C]"
-      >
-        <div>
-          <label className="block text-[#FFCB9A] mb-1 font-semibold">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="Enter your full name"
-            className="w-full p-2 rounded-md bg-[#2C3531] text-[#D1E8E2] focus:outline-none focus:ring-2 focus:ring-[#D9B08C]"
-          />
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+      <div className="bg-white rounded-2xl shadow-lg w-full max-w-md p-6">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-semibold text-gray-800">
+            Book Ticket - <span className="text-[#00BFA6]">{selectedEvent.title}</span>
+          </h2>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 text-xl"
+          >
+            &times;
+          </button>
         </div>
 
-        <div>
-          <label className="block text-[#FFCB9A] mb-1 font-semibold">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="example@email.com"
-            className="w-full p-2 rounded-md bg-[#2C3531] text-[#D1E8E2] focus:outline-none focus:ring-2 focus:ring-[#D9B08C]"
-          />
-        </div>
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-600">
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-xl px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#00BFA6]"
+              required
+            />
+          </div>
 
-        <div>
-          <label className="block text-[#FFCB9A] mb-1 font-semibold">Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            placeholder="07XXXXXXXX"
-            className="w-full p-2 rounded-md bg-[#2C3531] text-[#D1E8E2] focus:outline-none focus:ring-2 focus:ring-[#D9B08C]"
-          />
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-600">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="e.g. 0712345678"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-xl px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#00BFA6]"
+              required
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="w-full bg-[#D9B08C] text-[#2C3531] font-semibold py-2 rounded-md hover:bg-[#FFCB9A] transition"
-        >
-          Book Ticket
-        </button>
-      </form>
+          <div>
+            <label className="block text-sm font-medium text-gray-600">
+              Email (optional)
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded-xl px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#00BFA6]"
+            />
+          </div>
 
-      {submitted && (
-        <div className="mt-10 w-full flex justify-center">
-          <Ticket booking={booking} />
-        </div>
-      )}
+          {/* Price */}
+          <div className="flex justify-between mt-4 text-lg font-semibold">
+            <span>Total</span>
+            <span className="text-[#00BFA6]">KES {selectedEvent.price}</span>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="mt-4 bg-[#00BFA6] hover:bg-[#00a98f] text-white rounded-xl py-2 transition"
+          >
+            Confirm Booking
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
