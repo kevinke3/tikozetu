@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Elgon Valley Color Fest 2025",
+    "date": "2025-11-02",
+    "location": "Elgon Valley Grounds, Iten",
+    "price": 800,
+    "image": "/images/colorfest.jpg",
+    "description": "Get ready for the biggest color explosion in Elgeyo! A day of music, paint, and pure fun. Come dressed in white and leave in colors. DJs, local artists, and food stalls available."
+  },
+  {
+    "id": 2,
+    "title": "Nairobi Tech Expo 2025",
+    "date": "2025-12-14",
+    "location": "KICC, Nairobi",
+    "price": 1500,
+    "image": "/images/techexpo.jpg",
+    "description": "Explore the future of technology, innovation, and startups in Kenya. Join entrepreneurs, developers, and investors for two days of exhibitions, talks, and workshops."
+  },
+  {
+    "id": 3,
+    "title": "Rhythms of the Rift Valley",
+    "date": "2025-10-25",
+    "location": "Kerio View Resort, Iten",
+    "price": 1000,
+    "image": "/images/rhythms.jpg",
+    "description": "Experience live performances from the Rift’s finest. A celebration of local talent, culture, and art. Enjoy traditional and modern Kenyan music in a scenic sunset view."
+  },
+  {
+    "id": 4,
+    "title": "Tikozetu Fashion Night",
+    "date": "2025-11-30",
+    "location": "Eldoret Town Hall",
+    "price": 1200,
+    "image": "/images/fashionnight.jpg",
+    "description": "A night of style, elegance, and culture. Join Kenya’s top designers and models for the ultimate fashion showcase. Dress code: Elegant Black & Gold."
+  },
+  {
+    "id": 5,
+    "title": "Iten Marathon 2025",
+    "date": "2025-12-07",
+    "location": "Iten Stadium",
+    "price": 500,
+    "image": "/images/marathon.jpg",
+    "description": "Run with the champions! The Iten Marathon brings together athletes from all over Kenya. Open to amateurs and professionals. Register early to get your official Tikozetu race kit."
+  }
+]

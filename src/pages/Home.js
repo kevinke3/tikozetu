@@ -14,9 +14,10 @@ const Home = () => {
       </section>
 
       <EventList />
+      
 
       <div className="my-20">
-        <BookingForm />
+        <BookingForm eventName="Elgon Valley Color Fest" date="2025-11-02" />
       </div>
     </div>
   );
