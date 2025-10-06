@@ -1,14 +1,15 @@
-import React from 'react';
-import Button from './Button';
+import React from "react";
 
-const Button = React.forwardRef(({ children, onClick, className = '', type = 'button', disabled = false }, ref) => (
-  <button
-    ref={ref}
-    type={type}
-    onClick={onClick}
-    disabled={disabled}
-    className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}
-  >
-    {children}
-  </button>
-));
+const Button = ({ children, onClick, className = '', type = 'button' }) => {
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={`bg-[#00BFA6] hover:bg-[#00a98f] text-white px-4 py-2 rounded-xl transition ${className}`}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;
