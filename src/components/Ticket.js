@@ -1,8 +1,8 @@
 import React from "react";
-import { Card, CardContent } from "./src/components/ui/card";
-import { Button } from "./src/components/ui/button";
+import { Card, CardContent } from "./ui/card";
+import  Button  from "./ui/Button";
 
-const Ticket = ({ ticket }) => {
+function Ticket({ ticket }) {
   return (
     <Card className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition duration-300">
       <CardContent className="p-4 flex flex-col gap-3">
@@ -20,6 +20,6 @@ const Ticket = ({ ticket }) => {
       </CardContent>
     </Card>
   );
-};
+}
 
 export default Ticket;

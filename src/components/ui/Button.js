@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const Button = ({ children, onClick, className = '', type = 'button' }) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`bg-[#00BFA6] hover:bg-[#00a98f] text-white px-4 py-2 rounded-xl transition ${className}`}
+      className={`bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-all ${className}`}
     >
       {children}
     </button>
