@@ -1,26 +1,28 @@
-// src/App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import EventDetails from './pages/EventDetails';
-import AdminDashboard from './pages/AdminDashboard';
-import VerifyTicket from './pages/VerifyTicket';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import EventDetails from "./pages/EventDetails";
+import VerifyTicket from "./pages/VerifyTicket";
+import AdminDashboard from "./pages/AdminDashboard";
+import Ticket from "./components/Ticket";
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-[#116466] text-[#D1E8E2]">
+      <div className="font-sans bg-gray-50 min-h-screen">
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/event/:id" element={<EventDetails />} />
-          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/verify" element={<VerifyTicket />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/ticket" element={<Ticket />} />
         </Routes>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
