@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "./src/components/ui/card";
+import { Button } from "./src/components/ui/button";
 
 const Ticket = ({ ticket }) => {
   return (
